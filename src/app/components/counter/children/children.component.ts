@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ChildrenComponent implements OnInit {
 
   @Input() counter: number;
+
   @Output() counterChanged = new EventEmitter<number>();
 
   constructor() { }
