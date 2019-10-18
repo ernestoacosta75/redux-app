@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'redux-app';
+  counter: number;
+
+  constructor() {
+    this.counter = 10;
+  }
+
+  increment() {
+    this.counter ++;
+  }
+
+  decrement() {
+    this.counter --;
+  }
 }
