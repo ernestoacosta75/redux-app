@@ -7,22 +7,23 @@
  * They are without side effects and handle each state transition synchronously.
  */
 import { Action } from '@ngrx/store';
+import { CounterActions, CounterActionTypes, MultiplyAction } from './store/counter.actions';
 
-export function counterReducer(state: number = 10, action: Action) {
+export function counterReducer(state: number = 10, action: CounterActions) {
   switch (action.type) {
-    case 'INCREMENT':
+    case CounterActionTypes.INCREMENT:
       return state += 1;
       break;
 
-    case 'DECREMENT':
+    case CounterActionTypes.DECREMENT:
       return state -= 1;
       break;
 
-    case 'MULTIPLY':
+    case CounterActionTypes.MULTIPLY:
       return state *= 2;
       break;
 
-    case 'DIVIDE':
+    case CounterActionTypes.DIVIDE:
       return state /= 2;
       break;
 

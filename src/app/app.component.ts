@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store, Action } from '@ngrx/store';
+import * as fromCounterActions from './components/counter/store/counter.actions';
 
 interface AppState {
   counter: number;
@@ -21,19 +22,13 @@ export class AppComponent {
   }
 
   increment() {
-    // this.counter ++;
-    const action: Action = {
-      type: 'INCREMENT'
-    };
+    const action = new fromCounterActions.IncrementAction();
 
     this.store.dispatch(action);
   }
 
   decrement() {
-    // this.counter --;
-    const action: Action = {
-      type: 'DECREMENT'
-    };
+    const action = new fromCounterActions.DecrementAction();
 
     this.store.dispatch(action);
   }
