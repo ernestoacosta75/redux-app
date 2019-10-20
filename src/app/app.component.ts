@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { Store, Action } from '@ngrx/store';
 
+interface AppState {
+  counter: number;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,15 +13,28 @@ export class AppComponent {
   title = 'redux-app';
   counter: number;
 
-  constructor() {
-    this.counter = 10;
+  constructor( private store: Store<AppState>) {
+    // this.counter = 10;
+    this.store.subscribe( state => {
+      this.counter = state.counter;
+    });
   }
 
   increment() {
-    this.counter ++;
+    // this.counter ++;
+    const action: Action = {
+      type: 'INCREMENT'
+    };
+
+    this.store.dispatch(action);
   }
 
   decrement() {
-    this.counter --;
+    // this.counter --;
+    const action: Action = {
+      type: 'DECREMENT'
+    };
+
+    this.store.dispatch(action);
   }
 }
