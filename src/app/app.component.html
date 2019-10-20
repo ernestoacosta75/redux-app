@@ -16,6 +16,9 @@
 
 <div class="row text-center">
     <div class="col">
+        <!--Sending the counter attribute from parent to children.
+            The parent is listening the changes from the children through the
+            counterChanged output from the children-->
         <app-children [counter]="counter" (counterChanged)="counter = $event"></app-children>
     </div>
 </div>

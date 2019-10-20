@@ -25,4 +25,14 @@ export class ChildrenComponent implements OnInit {
     this.counter /= 2;
     this.counterChanged.emit(this.counter);
   }
+
+  /**
+   * To propagate the events emitted from the newphew
+   * till the parent component.
+   * @param newCounter
+   */
+  resetFromNephew(newCounter) {
+    this.counter = newCounter;
+    this.counterChanged.emit(this.counter);
+  }
 }
