@@ -18,9 +18,8 @@ export class AppComponent {
   counter$: Observable<number[]>;
 
   constructor( private store: Store<AppState>) {
-    this.store.subscribe( state => {
-      this.counter = state.counter; // IN this way, I'm subscribed to all the changes in the state
-    });
+    this.store.select('counter')
+        .subscribe( counter => this.counter = counter);
   }
 
   increment() {
