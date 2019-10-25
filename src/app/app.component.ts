@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, Action } from '@ngrx/store';
-import * as fromCounterActions from './components/counter/store/counter.actions';
 import { Observable } from 'rxjs';
-import { CounterActions } from './components/store/counter-actions';
+import { IncrementAction, DecrementAction } from './components/counter/store/counter.actions';
 
 interface AppState {
   counter: number;
@@ -20,25 +19,21 @@ export class AppComponent {
 
   constructor( private store: Store<AppState>) {
     this.store.subscribe( state => {
-      this.counter = state.counter;
+      this.counter = state.counter; // IN this way, I'm subscribed to all the changes in the state
     });
   }
 
   increment() {
-    const action: Action = {
-      type: 'INCREMENT'
-    }
+    const action = new IncrementAction();
 
     this.store.dispatch(action);
 
     // const action = new fromCounterActions.IncrementAction();
-    //this.store.dispatch(CounterActions.LoadIncrement(null));
+    // this.store.dispatch(CounterActions.LoadIncrement(null));
   }
 
   decrement() {
-    const action: Action = {
-      type: 'DECREMENT'
-    }
+    const action = new DecrementAction();
 
     this.store.dispatch(action);
 

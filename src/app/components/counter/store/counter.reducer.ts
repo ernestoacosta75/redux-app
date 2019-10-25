@@ -1,35 +1,18 @@
-import * as fromCounterActions from './counter.actions';
-import { CounterActionTypes } from './counter.actions';
+import { Action } from '@ngrx/store';
+import { INCREMENT, DECREMENT } from './counter.actions';
 
-export interface CounterState {
-  loaded: boolean;
-  loading: boolean;
-  data: any [];
-}
+export function counterReducer(state: number = 10, action: Action) {
 
-export const initialState: CounterState = {
-  loaded: false,
-  loading: false,
-  data: []
-}
+  switch(action.type) {
 
+    case INCREMENT:
+      return state += 1;
 
-export function reducer(state: CounterState = initialState,
-                        action: fromCounterActions.CounterActions) {
+    case DECREMENT:
+      return state -= 1;
 
-  switch (action.type) {
-    case CounterActionTypes.INCREMENT:
-      break;
-
-    case CounterActionTypes.DECREMENT:
-      break;
-
-    case CounterActionTypes.MULTIPLY:
-      break;
-
-    case CounterActionTypes.DIVIDE:
-      break;
+    default:
+      return state;
   }
 
-  return state;
 }
