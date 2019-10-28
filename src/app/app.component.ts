@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { IncrementAction, DecrementAction } from './components/counter/store/counter.actions';
-import { AppState } from './app.reducers';
+import * as fromCounter from '@app/components/counter/store/counter.actions';
+import { AppState } from '@app/app.reducers';
 
 @Component({
   selector: 'app-root',
@@ -20,21 +20,12 @@ export class AppComponent {
   }
 
   increment() {
-    const action = new IncrementAction();
-
+    const action = new fromCounter.IncrementAction();
     this.store.dispatch(action);
-
-    // const action = new fromCounterActions.IncrementAction();
-    // this.store.dispatch(CounterActions.LoadIncrement(null));
   }
 
   decrement() {
-    const action = new DecrementAction();
-
+    const action = new fromCounter.DecrementAction();
     this.store.dispatch(action);
-
-    // const action = new fromCounterActions.DecrementAction();
-    // this.store.dispatch(CounterActions.LoadDecrement(null));
-
   }
 }

@@ -4,11 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { AppComponent } from './app.component';
-import { ChildrenComponent } from './components/counter/children/children.component';
-import { NephewComponent } from './components/counter/nephew/nephew.component';
+import { AppComponent } from '@app/app.component';
+import { ChildrenComponent } from '@app/components/counter/children/children.component';
+import { NephewComponent } from '@app/components/counter/nephew/nephew.component';
 
-import { counterReducer } from './components/counter/store/counter.reducer';
+import { counterReducer } from '@app/components/counter/store/counter.reducer';
 import { environment } from '../environments/environment.prod';
 
 @NgModule({

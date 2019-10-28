@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../app.reducers';
-import { MultiplyAction, DivideAction } from '../store/counter.actions';
+import { AppState } from '@app/app.reducers';
+import { MultiplyAction, DivideAction } from '@app/components/counter/store/counter.actions';
 
 @Component({
   selector: 'app-children',

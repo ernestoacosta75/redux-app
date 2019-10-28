@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ResetAction } from '../store/counter.actions';
+import * as fromCounter from '@app/components/counter/store/counter.actions';
 
 @Component({
   selector: 'app-nephew',
@@ -21,7 +21,7 @@ export class NephewComponent implements OnInit {
   }
 
   reset() {
-    const action = new ResetAction();
+    const action = new fromCounter.ResetAction();
     this.store.dispatch(action);
   }
 
