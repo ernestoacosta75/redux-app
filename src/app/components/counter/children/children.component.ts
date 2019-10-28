@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app.reducers';
+import { MultiplyAction } from '../store/counter.actions';
 
 @Component({
   selector: 'app-children',
@@ -7,23 +10,29 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ChildrenComponent implements OnInit {
 
-  @Input() counter: number;
+  counter: number;
 
-  @Output() counterChanged = new EventEmitter<number>();
-
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    // Listening the changes on the state
+    this.store.select('counter')
+    .subscribe(counter => {
+      this.counter = counter;
+      console.log(this.counter);
+    });
   }
 
   multiply() {
     this.counter *= 2;
-    this.counterChanged.emit(this.counter);
+    const action = new MultiplyAction();
+    this.store.dispatch(action);
+    // this.counterChanged.emit(this.counter);
   }
 
   divide() {
     this.counter /= 2;
-    this.counterChanged.emit(this.counter);
+    // this.counterChanged.emit(this.counter);
   }
 
   /**
@@ -33,6 +42,6 @@ export class ChildrenComponent implements OnInit {
    */
   resetFromNephew(newCounter) {
     this.counter = newCounter;
-    this.counterChanged.emit(this.counter);
+    // this.counterChanged.emit(this.counter);
   }
 }

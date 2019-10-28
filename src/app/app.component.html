@@ -11,16 +11,14 @@
         <button class="btn btn-info" (click)="decrement()">Decrement</button>
     </div>
 </div>
-<!-- -->
+
 <hr>
 
 <!--Sending the counter attribute from parent to children.
             The parent is listening the changes from the children through the
-            counterChanged output from the children
+            counterChanged output from the children -->
 <div class="row text-center">
-  <div class="col">
-      <app-children [counter]="counter" (counterChanged)="counter = $event"></app-children>
-  </div>
+    <div class="col">
+        <app-children></app-children>
+    </div>
 </div>
--->
-

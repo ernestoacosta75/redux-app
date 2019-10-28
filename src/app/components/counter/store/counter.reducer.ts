@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { INCREMENT, DECREMENT } from './counter.actions';
+import { INCREMENT, DECREMENT, MULTIPLY } from './counter.actions';
 
 export function counterReducer(state: number = 10, action: Action) {
 
@@ -10,6 +10,9 @@ export function counterReducer(state: number = 10, action: Action) {
 
     case DECREMENT:
       return state -= 1;
+
+    case MULTIPLY:
+      return state *= 2;
 
     default:
       return state;
