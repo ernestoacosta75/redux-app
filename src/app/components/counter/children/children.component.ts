@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducers';
-import { MultiplyAction } from '../store/counter.actions';
+import { MultiplyAction, DivideAction } from '../store/counter.actions';
 
 @Component({
   selector: 'app-children',
@@ -24,24 +24,21 @@ export class ChildrenComponent implements OnInit {
   }
 
   multiply() {
-    this.counter *= 2;
-    const action = new MultiplyAction();
+    const action = new MultiplyAction(5);
     this.store.dispatch(action);
-    // this.counterChanged.emit(this.counter);
   }
 
   divide() {
-    this.counter /= 2;
-    // this.counterChanged.emit(this.counter);
+    const action = new DivideAction(5);
+    this.store.dispatch(action);
   }
 
   /**
    * To propagate the events emitted from the newphew
    * till the parent component.
-   * @param newCounter
+   * @param newCounter New counter
    */
   resetFromNephew(newCounter) {
     this.counter = newCounter;
-    // this.counterChanged.emit(this.counter);
   }
 }
