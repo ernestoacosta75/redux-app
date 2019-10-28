@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ResetAction } from '../store/counter.actions';
 
 @Component({
   selector: 'app-nephew',
@@ -7,17 +9,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NephewComponent implements OnInit {
 
-  @Input() counter: number;
-  @Output() counterChanged = new EventEmitter<number>();
+  counter: number;
 
-  constructor() { }
+  constructor(private store: Store<number>) { }
 
   ngOnInit() {
+    this.store.select('counter')
+      .subscribe(counter => {
+        this.counter = counter;
+      });
   }
 
   reset() {
-    this.counter = 0;
-    this.counterChanged.emit(this.counter);
+    const action = new ResetAction();
+    this.store.dispatch(action);
   }
 
 }
